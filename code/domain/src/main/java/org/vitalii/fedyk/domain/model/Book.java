@@ -1,16 +1,23 @@
 package org.vitalii.fedyk.domain.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.vitalii.fedyk.domain.vo.BookGenre;
-import org.vitalii.fedyk.domain.vo.BookId;
 
-public class Book extends BaseEntity<BookId> {
-    private final Author author;
+@NoArgsConstructor
+@AllArgsConstructor
+@Setter
+@Getter
+public class Book extends BaseEntity<Long> {
+    private Author author;
     private String title;
     private String description;
-    private final BookGenre bookGenre;
-    private final Integer pagesCount;
+    private BookGenre bookGenre;
+    private Integer pagesCount;
 
-    public Book(BookId bookId, Author author, int pagesCount, BookGenre bookGenre, String description, String title) {
+    public Book(Long bookId, Author author, int pagesCount, BookGenre bookGenre, String description, String title) {
         validateAuthor(author);
         validateTitle(title);
         validateBookGenre(bookGenre);
