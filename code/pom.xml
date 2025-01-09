@@ -42,15 +42,13 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
-    <dependencies>
-    </dependencies>
 
-    <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.mapstruct</groupId>
                 <artifactId>mapstruct</artifactId>
                 <version>${org.mapstruct.version}</version>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>org.projectlombok</groupId>
@@ -64,7 +62,6 @@
                 <version>${version.mapstruct-lombok}</version>
             </dependency>
         </dependencies>
-    </dependencyManagement>
 
     <build>
         <plugins>

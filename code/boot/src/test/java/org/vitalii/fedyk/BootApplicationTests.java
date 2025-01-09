@@ -1,4 +1,4 @@
-package org.vitalii.fedyk.boot;
+package org.vitalii.fedyk;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
