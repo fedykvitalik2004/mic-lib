@@ -13,6 +13,7 @@ import java.time.ZonedDateTime;
 @Setter
 @Getter
 public class BorrowedBook extends BaseEntity<BorrowedBookId>{
+    private Book book;
     private ZonedDateTime borrowDate;
     private ZonedDateTime returnDate;
 }

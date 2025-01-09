@@ -12,6 +12,6 @@ import lombok.Setter;
 @Getter
 @Embeddable
 public class FullName {
-    private long bookId;
-    private long userId;
+    private String firstName;
+    private String lastName;
 }

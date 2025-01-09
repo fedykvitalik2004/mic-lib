@@ -54,4 +54,12 @@ public class JpaBorrowedBookRepositoryAdapter implements BorrowedBookRepository 
         borrowedBookEntityRepository.deleteById(
                 new BorrowedBookEntityId(borrowedBookId.getBookId(), borrowedBookId.getUserId()));
     }
+
+    @Override
+    public boolean existsById(BorrowedBookId borrowedBookId) {
+        return borrowedBookEntityRepository.existsById(new BorrowedBookEntityId(
+                borrowedBookId.getBookId(),
+                borrowedBookId.getUserId())
+        );
+    }
 }

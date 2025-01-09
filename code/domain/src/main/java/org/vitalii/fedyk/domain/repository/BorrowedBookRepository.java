@@ -13,4 +13,5 @@ public interface BorrowedBookRepository {
     BorrowedBook save(BorrowedBook borrowedBook);
     Optional<BorrowedBook> findById(BorrowedBookId borrowedBookId);
     void delete(BorrowedBookId borrowedBookId);
+    boolean existsById(BorrowedBookId borrowedBookId);
 }

@@ -56,10 +56,13 @@ public class Book extends BaseEntity<Long> {
         }
     }
 
-    void updateBook(String title, String description) {
+    public void updateBook(String title, String description, BookGenre bookGenre, int pagesCount, Author author) {
         validateTitle(title);
         this.title = title;
         this.description = description;
+        this.bookGenre = bookGenre;
+        this.pagesCount = pagesCount;
+        this.author = author;
     }
 
     void validatePagesCount(Integer pagesCount) {

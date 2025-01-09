@@ -16,4 +16,10 @@ public class Author extends BaseEntity<Long> {
     private FullName fullName;
     private String description;
     private List<Book> books;
+
+    public Author update(Author author) {
+        this.fullName = author.fullName;
+        this.description = author.description;
+        return this;
+    }
 }

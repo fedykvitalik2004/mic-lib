@@ -11,6 +11,7 @@ public interface BookMapper {
     @Mapping(target = "author.id", source = "authorId")
     Book toBook(CreateBookDto createBookDto);
     @Mapping(target = "authorId", source = "author.id")
-    @Mapping(target = "authorFullName", source = "author.fullName")
+    @Mapping(target = "authorFullName.firstName", source = "author.fullName.firstName")
+    @Mapping(target = "authorFullName.lastName", source = "author.fullName.lastName")
     ReadBookDto toReadBookDto(Book book);
 }

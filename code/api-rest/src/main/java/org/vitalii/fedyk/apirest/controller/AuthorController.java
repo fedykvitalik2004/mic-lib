@@ -9,21 +9,23 @@ import org.vitalii.fedyk.apirest.dto.ReadAuthorDto;
 import org.vitalii.fedyk.apirest.dto.ReadAuthorsDto;
 import org.vitalii.fedyk.apirest.mapper.AuthorMapper;
 import org.vitalii.fedyk.domain.model.Author;
-import org.vitalii.fedyk.domain.usecase.author.CreateAuthorUseCase;
-import org.vitalii.fedyk.domain.usecase.author.ReadAllAuthorsUseCase;
-import org.vitalii.fedyk.domain.usecase.author.ReadAuthorUseCase;
+import org.vitalii.fedyk.domain.usecase.author.*;
 
 @RestController
 public class AuthorController implements AuthorsApi {
     private ReadAllAuthorsUseCase readAllAuthorsUseCase;
     private ReadAuthorUseCase readAuthorUseCase;
     private CreateAuthorUseCase createAuthorUseCase;
+    private DeleteAuthorUseCase deleteAuthorUseCase;
+    private UpdateAuthorUseCase updateAuthorUseCase;
     private AuthorMapper authorMapper;
 
-    public AuthorController(ReadAllAuthorsUseCase readAllAuthorsUseCase, ReadAuthorUseCase readAuthorUseCase, CreateAuthorUseCase createAuthorUseCase, AuthorMapper authorMapper) {
+    public AuthorController(ReadAllAuthorsUseCase readAllAuthorsUseCase, ReadAuthorUseCase readAuthorUseCase, CreateAuthorUseCase createAuthorUseCase, DeleteAuthorUseCase deleteAuthorUseCase, UpdateAuthorUseCase updateAuthorUseCase, AuthorMapper authorMapper) {
         this.readAllAuthorsUseCase = readAllAuthorsUseCase;
         this.readAuthorUseCase = readAuthorUseCase;
         this.createAuthorUseCase = createAuthorUseCase;
+        this.deleteAuthorUseCase = deleteAuthorUseCase;
+        this.updateAuthorUseCase = updateAuthorUseCase;
         this.authorMapper = authorMapper;
     }
 
@@ -36,7 +38,7 @@ public class AuthorController implements AuthorsApi {
 
     @Override
     public void deleteAuthor(Long authorId) {
-
+        deleteAuthorUseCase.execute(authorId);
     }
 
     @Override
@@ -62,6 +64,8 @@ public class AuthorController implements AuthorsApi {
 
     @Override
     public ReadAuthorDto updateAuthor(Long authorId, CreateAuthorDto createAuthorDto) {
-        return null;
+        return authorMapper.toReadAuthorDto(
+                updateAuthorUseCase.execute(authorId, authorMapper.toAuthor(createAuthorDto))
+        );
     }
 }

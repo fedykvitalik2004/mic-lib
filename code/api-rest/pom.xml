@@ -6,7 +6,6 @@
         <groupId>org.vitalii.fedyk</groupId>
         <artifactId>code</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath/>
     </parent>
     <groupId>org.vitalii.fedyk</groupId>
     <artifactId>api-rest</artifactId>
