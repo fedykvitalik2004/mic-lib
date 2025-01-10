@@ -1,8 +1,8 @@
-package org.vitalii.fedyk.apirest.mapper;
+package org.vitalii.fedyk.api_rest.mapper;
 
 import org.mapstruct.Mapper;
-import org.vitalii.fedyk.apirest.dto.CreateAuthorDto;
-import org.vitalii.fedyk.apirest.dto.ReadAuthorDto;
+import org.vitalii.fedyk.api_rest.generated.dto.CreateAuthorDto;
+import org.vitalii.fedyk.api_rest.generated.dto.ReadAuthorDto;
 import org.vitalii.fedyk.domain.model.Author;
 
 @Mapper(componentModel = "spring")

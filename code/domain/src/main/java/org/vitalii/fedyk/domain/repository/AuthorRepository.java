@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface AuthorRepository {
     Author save(Author author);
-    Optional<Author> findById(long userId);
+    Optional<Author> findById(Long authorId);
     boolean existsById(long authorId);
     Page<Author> findAll(Pageable pageable);
     void deleteById(long authorId);

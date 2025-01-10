@@ -18,7 +18,6 @@ public class GetBorrowedBooksByUserIdUseCaseImpl implements GetBorrowedBooksByUs
     @Override
     public List<BorrowedBook> execute(long userId) {
         List<BorrowedBook> borrowedBooks = borrowedBookRepository.findByUserId(userId);
-        borrowedBooks.forEach(o -> o.setBook(readBookUseCase.execute(o.getBook().getId())));
         return borrowedBooks;
     }
 }

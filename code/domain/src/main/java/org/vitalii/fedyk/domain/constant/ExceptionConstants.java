@@ -1,4 +1,4 @@
-package org.vitalii.fedyk.infrastructure.constant;
+package org.vitalii.fedyk.domain.constant;
 
 public class ExceptionConstants {
     public static final String AUTHOR_NOT_FOUND_BY_ID = "Author not found by id %d";

@@ -1,5 +1,6 @@
 package org.vitalii.fedyk.application.usecase.author;
 
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.vitalii.fedyk.domain.exception.NotFoundException;
@@ -8,11 +9,13 @@ import org.vitalii.fedyk.domain.repository.AuthorRepository;
 import org.vitalii.fedyk.domain.usecase.author.DeleteAuthorUseCase;
 import org.vitalii.fedyk.domain.usecase.book.AuthorHasBooksUseCase;
 
-import static org.vitalii.fedyk.infrastructure.constant.ExceptionConstants.AUTHOR_CANNOT_BE_DELETED;
-import static org.vitalii.fedyk.infrastructure.constant.ExceptionConstants.AUTHOR_NOT_FOUND_BY_ID;
+import static org.vitalii.fedyk.domain.constant.ExceptionConstants.AUTHOR_CANNOT_BE_DELETED;
+import static org.vitalii.fedyk.domain.constant.ExceptionConstants.AUTHOR_NOT_FOUND_BY_ID;
+
 
 @Component
 @AllArgsConstructor
+@Transactional
 public class DeleteAuthorUseCaseImpl implements DeleteAuthorUseCase {
     private AuthorRepository authorRepository;
     private AuthorHasBooksUseCase authorHasBooksUseCase;

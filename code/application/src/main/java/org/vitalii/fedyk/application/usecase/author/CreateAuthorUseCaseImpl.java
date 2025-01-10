@@ -13,6 +13,7 @@ public class CreateAuthorUseCaseImpl implements CreateAuthorUseCase {
 
     @Override
     public Author execute(Author author) {
-        return authorRepository.save(author);
+        Author savedAuthor =  authorRepository.save(author);
+        return savedAuthor;
     }
 }

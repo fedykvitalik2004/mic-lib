@@ -1,17 +1,14 @@
 package org.vitalii.fedyk.domain.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Objects;
 
+@Setter
+@Getter
 public abstract class BaseEntity <ID> {
-    private ID id;
-
-    public void setId(ID id) {
-        this.id = id;
-    }
-
-    public ID getId() {
-        return id;
-    }
+    protected ID id;
 
     @Override
     public boolean equals(Object o) {

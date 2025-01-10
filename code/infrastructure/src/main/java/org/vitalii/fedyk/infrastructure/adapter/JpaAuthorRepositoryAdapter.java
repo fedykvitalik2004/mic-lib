@@ -20,13 +20,13 @@ public class JpaAuthorRepositoryAdapter implements AuthorRepository {
 
     @Override
     public Author save(Author author) {
-        final AuthorEntity authorEntity = authorEntityMapper.toEntity(author);
-        return authorEntityMapper.toModel(authorEntityRepository.save(authorEntity));
+        final AuthorEntity saved = authorEntityRepository.save(authorEntityMapper.toEntity(author));
+        return authorEntityMapper.toModel(saved);
     }
 
     @Override
-    public Optional<Author> findById(final long userId) {
-        return authorEntityRepository.findById(userId)
+    public Optional<Author> findById(Long authorId) {
+        return authorEntityRepository.findById(authorId)
                 .map(o -> authorEntityMapper.toModel(o));
     }
 
@@ -37,8 +37,8 @@ public class JpaAuthorRepositoryAdapter implements AuthorRepository {
 
     @Override
     public Page<Author> findAll(Pageable pageable) {
-        return authorEntityRepository.findAll(pageable)
-                .map(o -> authorEntityMapper.toModel(o));
+        var authors = authorEntityRepository.findAll(pageable);
+        return authors.map(o -> authorEntityMapper.toModel(o));
     }
 
     @Override

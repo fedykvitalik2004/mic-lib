@@ -11,7 +11,7 @@ public class IsBorrowedByBookUseCaseImpl implements IsBorrowedByBookUseCase {
     private BorrowedBookRepository borrowedBookRepository;
 
     @Override
-    public boolean execute(long bookId) {
+    public boolean execute(Long bookId) {
         return borrowedBookRepository.existsByBorrowedBookIdBookId(bookId);
     }
 }

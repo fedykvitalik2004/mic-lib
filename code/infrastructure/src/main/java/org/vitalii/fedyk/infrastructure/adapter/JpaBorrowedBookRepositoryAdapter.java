@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import org.vitalii.fedyk.domain.model.BorrowedBook;
 import org.vitalii.fedyk.domain.repository.BorrowedBookRepository;
 import org.vitalii.fedyk.domain.vo.BorrowedBookId;
+import org.vitalii.fedyk.infrastructure.entity.BorrowedBookEntity;
 import org.vitalii.fedyk.infrastructure.entity.BorrowedBookEntityId;
 import org.vitalii.fedyk.infrastructure.mapper.BorrowedBookEntityMapper;
 import org.vitalii.fedyk.infrastructure.repository.BorrowedBookEntityRepository;
@@ -37,9 +38,9 @@ public class JpaBorrowedBookRepositoryAdapter implements BorrowedBookRepository 
 
     @Override
     public BorrowedBook save(BorrowedBook borrowedBook) {
-        return borrowedBookEntityMapper.toBorrowedBook(
-                borrowedBookEntityRepository.save(
-                        borrowedBookEntityMapper.toBorrowedBookEntity(borrowedBook)));
+        BorrowedBookEntity mappedBorrowedBook = borrowedBookEntityMapper.toBorrowedBookEntity(borrowedBook);
+        BorrowedBookEntity borrowedBookEntity = borrowedBookEntityRepository.save(mappedBorrowedBook);
+        return borrowedBookEntityMapper.toBorrowedBook(borrowedBookEntity);
     }
 
     @Override

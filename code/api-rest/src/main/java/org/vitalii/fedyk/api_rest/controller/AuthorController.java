@@ -1,13 +1,11 @@
-package org.vitalii.fedyk.apirest.controller;
+package org.vitalii.fedyk.api_rest.controller;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.RestController;
-import org.vitalii.fedyk.apirest.dto.CreateAuthorDto;
-import org.vitalii.fedyk.apirest.dto.PaginationDto;
-import org.vitalii.fedyk.apirest.dto.ReadAuthorDto;
-import org.vitalii.fedyk.apirest.dto.ReadAuthorsDto;
-import org.vitalii.fedyk.apirest.mapper.AuthorMapper;
+import org.vitalii.fedyk.api_rest.generated.controller.AuthorsApi;
+import org.vitalii.fedyk.api_rest.generated.dto.CreateAuthorDto;
+import org.vitalii.fedyk.api_rest.generated.dto.ReadAuthorDto;
 import org.vitalii.fedyk.domain.model.Author;
 import org.vitalii.fedyk.domain.usecase.author.*;
 

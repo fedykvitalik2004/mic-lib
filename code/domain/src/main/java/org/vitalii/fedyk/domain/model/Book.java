@@ -6,80 +6,39 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.vitalii.fedyk.domain.vo.BookGenre;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
 @Getter
 public class Book extends BaseEntity<Long> {
-    private Author author;
+    private Long authorId;
     private String title;
     private String description;
     private BookGenre bookGenre;
     private Integer pagesCount;
+    private List<BorrowedBook> borrowedBooks = new ArrayList<>();
 
-    public Book(Long bookId, Author author, int pagesCount, BookGenre bookGenre, String description, String title) {
-        validateAuthor(author);
-        validateTitle(title);
-        validateBookGenre(bookGenre);
-        validatePagesCount(pagesCount);
-        super.setId(bookId);
-        this.author = author;
+    public Book(Long id, Long authorId, int pagesCount, BookGenre bookGenre, String description, String title) {
+        this.id = id;
+        this.authorId = authorId;
         this.pagesCount = pagesCount;
         this.bookGenre = bookGenre;
         this.description = description;
         this.title = title;
     }
 
-    public Author getAuthor() {
-        return author;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public BookGenre getBookGenre() {
-        return bookGenre;
-    }
-
-    public Integer getPagesCount() {
-        return pagesCount;
-    }
-
-    void validateAuthor(Author author) {
-        if (author == null) {
-            throw new IllegalArgumentException("Author: Firstname Lastname be null");
-        }
-    }
-
-    public void updateBook(String title, String description, BookGenre bookGenre, int pagesCount, Author author) {
-        validateTitle(title);
+    public void updateBook(String title, String description, BookGenre bookGenre, int pagesCount, Long authorId) {
         this.title = title;
         this.description = description;
         this.bookGenre = bookGenre;
         this.pagesCount = pagesCount;
-        this.author = author;
+        this.authorId = authorId;
     }
 
-    void validatePagesCount(Integer pagesCount) {
-        if (pagesCount == null || pagesCount <= 0) {
-            throw new IllegalArgumentException("Pages count cannot be negative");
-        }
-    }
-
-    void validateTitle(String title) {
-        if (title == null || title.isEmpty()) {
-            throw new IllegalArgumentException("Title cannot be empty");
-        }
-    }
-
-    void validateBookGenre(BookGenre bookGenre) {
-        if (bookGenre == null) {
-            throw new IllegalArgumentException("Book genre cannot be null");
-        }
+    public void addBorrowedBook(BorrowedBook borrowedBook) {
+        borrowedBooks.add(borrowedBook);
     }
 }

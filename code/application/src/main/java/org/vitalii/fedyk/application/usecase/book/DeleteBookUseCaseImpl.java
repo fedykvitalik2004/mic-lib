@@ -9,8 +9,8 @@ import org.vitalii.fedyk.domain.repository.BookRepository;
 import org.vitalii.fedyk.domain.usecase.book.DeleteBookUseCase;
 import org.vitalii.fedyk.domain.usecase.borrowedbook.IsBorrowedByBookUseCase;
 
-import static org.vitalii.fedyk.infrastructure.constant.ExceptionConstants.BOOK_CANNOT_BE_DELETED;
-import static org.vitalii.fedyk.infrastructure.constant.ExceptionConstants.BOOK_NOT_FOUND_BY_ID;
+import static org.vitalii.fedyk.domain.constant.ExceptionConstants.BOOK_CANNOT_BE_DELETED;
+import static org.vitalii.fedyk.domain.constant.ExceptionConstants.BOOK_NOT_FOUND_BY_ID;
 
 @Component
 @AllArgsConstructor
@@ -19,7 +19,7 @@ public class DeleteBookUseCaseImpl implements DeleteBookUseCase {
     private BookRepository bookRepository;
 
     @Override
-    public void execute(long bookId) {
+    public void execute(Long bookId) {
         if (isBorrowedByBookUseCase.execute(bookId)) {
             throw new OperationNotPermittedException(BOOK_CANNOT_BE_DELETED);
         }

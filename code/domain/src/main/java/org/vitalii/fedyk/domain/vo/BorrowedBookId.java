@@ -10,6 +10,6 @@ import lombok.Setter;
 @Setter
 @Getter
 public class BorrowedBookId {
-    private long bookId;
-    private long userId;
+    protected Long bookId;
+    protected Long userId;
 }

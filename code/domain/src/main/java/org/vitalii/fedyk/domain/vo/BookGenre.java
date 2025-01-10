@@ -7,6 +7,12 @@ public enum BookGenre {
     SCIENCE_FICTION,
     FANTASY,
     BIOGRAPHY,
-    HISTORY,
-    ROMANCE
+    HISTORICAL,
+    ROMANCE,
+    THRILLER,
+    HORROR,
+    SELF_HELP,
+    HEALTH,
+    COOKBOOK,
+    CHILDREN
 }
